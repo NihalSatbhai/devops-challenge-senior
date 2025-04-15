@@ -20,25 +20,30 @@ This is a simple Flask-based microservice that returns the current time (in IST)
 
 ## Getting Started
 - **Clone the GitHub Repo:**
-   ```bash
-   git clone https://github.com/NihalSatbhai/devops-challenge-senior.git
+  ```bash
+  git clone https://github.com/NihalSatbhai/devops-challenge-senior.git
 
 - **Go to the app directory:**
-   ```bash
-   cd devops-challenge-senior/app/
+  ```bash
+  cd devops-challenge-senior/app/
 
 - **Build the docker image:**
-   ```bash
-   docker build -t simple-time-service:latest .
+  ```bash
+  docker build -t simple-time-service:latest .
 
 - **Run the container:**
-   ```bash
-   docker run -d -p 5000:5000 --name simple-time-service simple-time-service:latest
-   
+  ```bash
+  docker run -d -p 5000:5000 --name simple-time-service simple-time-service:latest
+
 - **Visit http://localhost:5000**
 
 ## Notes
 - **If you cannot access http://localhost:5000, try http://127.0.0.1:5000. There might be no entry for 'localhost' in your local DNS configuration.**
+
+- **If you do not wish to build the image locally using Dockerfile, You can use prebuilt image which is present on Dockerhub to do so you can have pull the image successfully and then run the docker run command mentioned above**
+  ```bash
+  docker pull nihalsatbhai/simple-time-service:latest
+  docker run -d -p 5000:5000 --name simple-time-service simple-time-service:latest
 
 - **If you face an issue like "port already in use," the default port (5000) might be occupied by another process. Try running the container on a different port. For example:**
   ```bash
