@@ -22,7 +22,9 @@ This is a simple Flask-based microservice that returns the current time (in IST)
 ## Getting Started
 - **Option 1: Running the Application Using Docker (Recommended)**
 1. Pull the docker image:
+   ```bash
    docker pull nihalsatbhai/simple-time-service:latest .
 2. Run the container:
+   ```bash
    docker run -d -p 5000:5000 --name simple-time-service nihalsatbhai/simple-time-service:latest
 3. Visit http://localhost:5000
