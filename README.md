@@ -40,7 +40,7 @@ This is a simple Flask-based microservice that returns the current time (in IST)
 ## Notes
 - **If you cannot access http://localhost:5000, try http://127.0.0.1:5000. There might be no entry for 'localhost' in your local DNS configuration.**
 
-- **If you do not wish to build the image locally using Dockerfile, You can use prebuilt image which is present on Dockerhub to do so you can have pull the image successfully and then run the docker run command mentioned above**
+- **If you do not wish to build the image locally using the Dockerfile, you can use the prebuilt image available on Docker Hub. To do so, simply pull the image and run the `docker run` command as mentioned above.**
   ```bash
   docker pull nihalsatbhai/simple-time-service:latest
   docker run -d -p 5000:5000 --name simple-time-service simple-time-service:latest
