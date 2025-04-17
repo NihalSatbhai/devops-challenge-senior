@@ -91,3 +91,5 @@ Follow these steps to deploy the infrastructure:
    ```bash
    terraform destroy -auto-approve
    ```
+7. The defaults provided in `terraform.tfvars` can be used as they are unless conflicting resources already exist:
+   - For example, the default VPC CIDR is `10.0.0.0/16`. If there is already an existing VPC in the same region with an overlapping CIDR block, you will need to modify the CIDR in `terraform.tfvars` to avoid conflicts.
