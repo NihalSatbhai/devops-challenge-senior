@@ -1,0 +1,30 @@
+# Local .terraform directories
+**/.terraform/*
+.terraform.lock.hcl
+
+# Terraform state files
+*.tfstate
+*.tfstate.backup
+
+# Crash log
+crash.log
+
+# Plan output
+*.tfplan
+
+# Terraform variable files (commonly used to hold secrets)
+# terraform.tfvars
+*.tfvars.json
+
+# Sensitive files
+*.pem
+*.key
+
+# IDE files (optional, depending on your editor)
+.vscode/
+.idea/
+*.swp
+
+# OS generated files
+.DS_Store
+Thumbs.db
