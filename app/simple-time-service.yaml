@@ -1,3 +1,5 @@
+# Deployment Manifest
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -25,6 +27,9 @@ spec:
             memory: "256Mi"
             cpu: "500m"
 ---
+
+# Service Manifest
+
 apiVersion: v1
 kind: Service
 metadata:

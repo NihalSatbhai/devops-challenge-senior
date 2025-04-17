@@ -1,3 +1,5 @@
+# Defines all the input variables required by the Terraform configuration
+
 variable "region" {
   description = "AWS region to deploy resources in"
   type        = string

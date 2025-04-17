@@ -1,3 +1,4 @@
+# VPC Module
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "5.1.1"
@@ -18,7 +19,7 @@ module "vpc" {
   tags = var.common_tags
 }
 
-
+# EKS Module
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "20.35.0"
@@ -65,6 +66,7 @@ module "eks" {
   tags = var.common_tags
 }
 
+# Null Resource
 resource "null_resource" "kubectl_apply" {
   depends_on = [module.eks]
   triggers = {

@@ -1,3 +1,5 @@
+# This file contains the variable values used by the Terraform code
+
 region                  = "us-east-1"
 aws_profile             = "<profile_name>"
 vpc_name                = "main-vpc"
