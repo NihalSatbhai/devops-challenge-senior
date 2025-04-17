@@ -1,3 +1,5 @@
+region                  = "us-east-1"
+aws_profile             = "<profile_name>"
 vpc_name                = "main-vpc"
 vpc_cidr                = "10.0.0.0/16"
 azs                     = ["us-east-1a", "us-east-1b"]

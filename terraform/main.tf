@@ -64,3 +64,17 @@ module "eks" {
 
   tags = var.common_tags
 }
+
+resource "null_resource" "kubectl_apply" {
+  depends_on = [module.eks]
+  triggers = {
+    cluster_name = var.cluster_name
+    region       = var.region
+    aws_profile  = var.aws_profile
+  }
+  provisioner "local-exec" {
+    when    = create
+    interpreter = ["PowerShell", "-Command"]
+    command     = "aws eks update-kubeconfig --region ${self.triggers.region} --name ${self.triggers.cluster_name} --profile ${self.triggers.aws_profile}; kubectl apply -f ../app/simple-time-service.yaml"
+  }
+}

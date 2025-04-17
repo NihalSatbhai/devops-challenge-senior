@@ -1,3 +1,13 @@
+variable "region" {
+  description = "AWS region to deploy resources in"
+  type        = string
+}
+
+variable "aws_profile" {
+  description = "AWS CLI profile name to use"
+  type        = string
+}
+
 variable "vpc_name" {
   description = "Name of the VPC"
   type        = string
