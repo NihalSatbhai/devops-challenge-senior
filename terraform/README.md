@@ -8,6 +8,7 @@ This Terraform project uses public modules from the Terraform Registry to create
 ## Infrastructure Details
 The directory structure looks like below,
 
+```
 devops-challenge-senior/
 ├── app/
 │   └── simple-time-service.yaml
@@ -17,6 +18,7 @@ devops-challenge-senior/
     ├── variables.tf
     ├── output.tf
     └── terraform.tfvars
+```
 
 ## Prerequisites
 - **[AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)**
@@ -30,6 +32,7 @@ Follow these steps to deploy the infrastructure:
   ```bash
   git clone https://github.com/NihalSatbhai/devops-challenge-senior.git
   cd devops-challenge-senior/terraform/
+  ```
 
 - **Configure AWS Authentication**
   We use AWS CLI profiles for authentication. Avoid using root credentials.
@@ -38,6 +41,7 @@ Follow these steps to deploy the infrastructure:
   3. Configure the AWS CLI profile:
   ```bash
   aws configure --profile <profile-name>
+  ```
   
   Update the following values in `terraform.tfvars`:
   - `aws_profile`: Your AWS CLI profile name
@@ -48,19 +52,23 @@ Follow these steps to deploy the infrastructure:
   Intialize Terraform:
   ```bash
   terraform init
+  ```
 
   Format and validate the code:
   ```bash
   terraform fmt
   terraform validate
+  ```
 
   Review the plan:
   ```bash
   terraform plan
+  ```
 
   Apply the configuration:
   ```bash
   terraform apply -auto-approve
+  ```
 
 ## Notes
 
@@ -70,8 +78,10 @@ Follow these steps to deploy the infrastructure:
 4. Before destroying the infrastructure, clean up the Kubernetes resources by running:
 ```bash
 kubectl delete -f ../app/simple-time-service.yaml
+```
 
 5. Once the resources are deleted, the Load Balancer will be removed automatically.
 6. Finally, destroy the entire infrastructure:
 ```bash
 terraform destroy -auto-approve
+```
