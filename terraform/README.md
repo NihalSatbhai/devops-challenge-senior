@@ -35,53 +35,59 @@ Follow these steps to deploy the infrastructure:
   ```
 
 - **Configure AWS Authentication**
-  We use AWS CLI profiles for authentication. Avoid using root credentials.
-  1. Create an IAM user with admin privileges in your AWS account.
-  2. Generate an access key and secret key for the user.
-  3. Configure the AWS CLI profile:
-  ```bash
-  aws configure --profile <profile-name>
-  ```
-  
-  Update the following values in `terraform.tfvars`:
-  - `aws_profile`: Your AWS CLI profile name
-  - `eks_admin_user_arn`: The ARN of the IAM user you created
-  Make sure you replace the Account ID and IAM username accordingly.
+
+  This project uses AWS CLI profiles for authentication. **Avoid using root credentials.**
+
+  **Steps:**
+  1. Create an IAM user with **admin privileges** in your AWS account.
+  2. Generate **Access Key** and **Secret Access Key** for that user.
+  3. Configure your AWS CLI profile:
+
+     ```bash
+     aws configure --profile <your-profile-name>
+     ```
+
+  **Update the following in `terraform.tfvars`:**
+  - `aws_profile`: Set it to the AWS CLI profile name you just configured.
+  - `eks_admin_user_arn`: Replace it with the full ARN of the IAM user you created.
+
+  > 💡 Make sure to replace the Account ID and IAM username in the ARN appropriately.
+
 
 - **Deploy the Infrastructure**
-  Intialize Terraform:
+
+  **Initialize Terraform:**
   ```bash
   terraform init
   ```
 
-  Format and validate the code:
+  **Format and validate the configuration:**
   ```bash
   terraform fmt
   terraform validate
   ```
 
-  Review the plan:
+  **Review the execution plan:**
   ```bash
   terraform plan
   ```
 
-  Apply the configuration:
+  **Apply the configuration to create resources:**
   ```bash
   terraform apply -auto-approve
   ```
 
 ## Notes
 
-1. A `null_resource` is used in `main.tf` to satisfy the requirement that after running terraform apply, the application should be accessible via a Load Balancer DNS.
-2. If the Load Balancer DNS doesn’t respond immediately, wait a few seconds and retry.
-3. The Load Balancer is dynamically created by Kubernetes when the `Service` of type `LoadBalancer` is applied it's not directly provisioned by Terraform.
-4. Before destroying the infrastructure, clean up the Kubernetes resources by running:
-```bash
-kubectl delete -f ../app/simple-time-service.yaml
-```
-
-5. Once the resources are deleted, the Load Balancer will be removed automatically.
+1. A `null_resource` is used in `main.tf` to meet the requirement that, after running `terraform apply`, the application should be accessible via a Load Balancer DNS.
+2. If the Load Balancer DNS does not respond immediately, wait a few seconds and try again.
+3. The Load Balancer is not directly provisioned by Terraform — it is dynamically created by Kubernetes when a `Service` of type `LoadBalancer` is applied.
+4. Before destroying the infrastructure, clean up the Kubernetes resources manually:
+   ```bash
+   kubectl delete -f ../app/simple-time-service.yaml
+   ```
+5. Once the Kubernetes resources are deleted, the Load Balancer will be automatically removed.
 6. Finally, destroy the entire infrastructure:
-```bash
-terraform destroy -auto-approve
-```
+   ```bash
+   terraform destroy -auto-approve
+   ```
